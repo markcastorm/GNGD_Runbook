@@ -1,0 +1,89 @@
+i believe its a new dawn new begining its a new run book  howp you have gon through the previous code see how good it its and its architecture 
+(D:\Projects\SIMBA-RUNBOOKS\NOAADDF_A) analyze the scripts weel we go na use the architecture  for this runbook we are gona have a master xls too like the mndmr project 
+
+now weare getting started on a new runnbook(F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook\Project_information\GNGD_Runbook.xlsx)
+the manual data (F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook\Project_information\GNGD_DATA_DAILY_20260205.xlsx)
+here is a csv format of it (F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook\Project_information\GNGD_DATA_DAILY_20260205 - DATA.csv)
+HERE IS THE MANUALY SCRAPED DATA REPORT and 
+Meta  we dont have a metafile for this run book just data thats all i need  like this (F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook\Project_information\GNGD_META_DAILY_20250530.xlsx)in xls
+
+Here is the Master file (F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook\Master_Data\Master_GNGD_DATA_DAILY.csv) i have created the master file that we are going to be updating on every run with new dates and values  let me walk you through the scraper first 
+analyze them first before we started so our code will be similar to the other one thuis is cummulative data you need to remember that we are going to be updating the data arcordingly daily
+thistime we will  have the config.py  add the necessary collumns mapinng since the sub headers and headers in the manual data will be exactly the way they are to every output and in the exact arrangemen 
+(F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook\Project_information\GNGD_DATA_DAILY_20260205.xlsx)
+
+
+seconndly lets move on to the to the scraper.py arcording to the runbook we are supposed to visit this urls and in a specific order(Need to save data from each link below:	
+here we have 5 different links (https://www.bundesnetzagentur.de/DE/Gasversorgung/aktuelle_gasversorgung/_svg/Gasimporte/Gasimporte.html
+https://www.bundesnetzagentur.de/DE/Gasversorgung/aktuelle_gasversorgung/_svg/Gasexporte/Gasexporte.html
+https://www.bundesnetzagentur.de/DE/Gasversorgung/aktuelle_gasversorgung/_svg/Gasfoerderung/Gasfoerderung.html
+https://www.bundesnetzagentur.de/DE/Gasversorgung/aktuelle_gasversorgung/_svg/GasverbrauchRLM_woechentlich/Gasverbrauch_RLM_W_2023_2.html?nn=375550
+https://www.bundesnetzagentur.de/DE/Gasversorgung/aktuelle_gasversorgung/_svg/GasverbrauchSLP_woechentlich/Gasverbrauch_SLP_W_2023.html?nn=375550)
+we are supposed to visit them  the first 3 arr the ounes required fort thiss run book Daily we are gona doo for weeekly in a new dirrectory(F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook_Weekly) with a different Master (F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook_Weekly\Master_Data\Master_GNGD_DATA_WEEKLY.csv) it is a littl differrent 
+
+lets start by visiting  the first link 
+(https://www.bundesnetzagentur.de/DE/Gasversorgung/aktuelle_gasversorgung/_svg/Gasimporte/Gasimporte.html)
+when you visist this its gona look like this (F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook\Project_information\GasImporte1image.png)here is a sample of the html (F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook\Project_information\sample1.txt)
+2)	Save csv file. Divide the data by columns and if necessary change the encoding to ANSI (to correctly display country names).
+	Save the data for each country.
+
+    we are supposed to lok for this  buton dynamically click it to trigar the download of a csv file (<div class="XchartFilters-wrapper">
+      <p class="downloadLink"><a href="_tools/SVG/js2/_functions/csv_export.html?view=renderCSV&amp;id=870296">Daten als CSV-Datei herunterladen</a></p>
+    </div>)
+    this will help us alot  find the button click it simulate a human click click it it will trigger a csv download  to file like this (F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook\Project_information\csv_export.csv)
+     analze the file you can ssee the data is separrated by semicolons we need to cleean it organize it to there respective cells accordingly  then parse it  get the data we require compare  with the master add it to its respective collumns according to headers and sub headers 
+     add the new data arcordingly
+
+
+     lets move on to the next link (https://www.bundesnetzagentur.de/DE/Gasversorgung/aktuelle_gasversorgung/_svg/Gasexporte/Gasexporte.html)
+
+     this is what it looks like (F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook\Project_information\Gasexporte2.png) here is a sample (F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook\Project_information\sample2.txt)
+similar to the other one we find this (<div class="XchartFilters-wrapper">
+      <p class="downloadLink"><a href="_tools/SVG/js2/_functions/csv_export.html?view=renderCSV&amp;id=870298">Daten als CSV-Datei herunterladen</a></p>
+    </div>) click the link no hardcoding find it dynamically  it will driger the download of a file like this (F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook\Project_information\csv_export (1).csv) the values a re sepparated with semicollons organize them  then parse and mapp the expected values t the expected columns we ar looking for new values for new dates arcccordingly
+
+
+    we move to the nex link (https://www.bundesnetzagentur.de/DE/Gasversorgung/aktuelle_gasversorgung/_svg/Gasfoerderung/Gasfoerderung.html)  the page will load  and look like this 
+    (F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook\Project_information\sample3.txt)(F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook\Project_information\Gasforderung.png)(F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook\Project_information\sample3.txt)
+(<div class="XchartFilters-wrapper">
+      <p class="downloadLink"><a href="_tools/SVG/js2/_functions/csv_export.html?view=renderCSV&amp;id=870300">Daten als CSV-Datei herunterladen</a></p>
+    </div>) we look at this click it it will triger the download  of the file like this analyze it (F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook\Project_information\csv_export (2).csv)
+    analyze it first still sepparated with semicollons clean then parse  add the neww data to the master arcordinly 
+the the parser will handle the parsing of both the master and the downloaded file the cleaning an d  editing the master in realtime without affecting the already existing data being surgical is important  the file generato as usual will make a coppy of the master after editing and name it  appropriately  as xls files and also the Metafile and the zip file appropriately in the output folder with timestamped subfoledrs for every run and a latest subfolder which will always hold the latest files in every run
+
+
+
+lets discuss the weekly links (https://www.bundesnetzagentur.de/DE/Gasversorgung/aktuelle_gasversorgung/_svg/GasverbrauchRLM_woechentlich/Gasverbrauch_RLM_W_2023_2.html?nn=375550)
+when we visit them they look like this (F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook\Project_information\image4.png)((F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook\Project_information\sample4.txt))
+similar to the rest we look for this (<div class="XchartFilters-wrapper">
+      <p class="downloadLink"><a href="_tools/SVG/js2/_functions/csv_export.html?view=renderCSV&amp;id=870314">Daten als CSV-Datei herunterladen</a></p>
+    </div> )  we simulate an human click on the (Daten als CSV-Datei herunterladen) button which will triger the download of the file looking like this (F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook\Project_information\csv_export (3).csv) analyze it for the weekly script we will do the same as daily clean the parse it  the edit the master in realtime  add the new values corresponding to the appropriate headeas and sub headers in the weekly master (F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook_Weekly\Master_Data\Master_GNGD_DATA_WEEKLY.csv)    here is the dirrectory for the weekly scripts 
+(F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook_Weekly)(F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook_Weekly\Project_information\GNGD_DATA_WEEKLY_20251218.xlsx)(F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook_Weekly\Project_information\GNGD_META_WEEKLY_20250424.xlsx) aanalyze them  here is where the weekly script will go 
+
+the last link is this (https://www.bundesnetzagentur.de/DE/Gasversorgung/aktuelle_gasversorgung/_svg/GasverbrauchSLP_woechentlich/Gasverbrauch_SLP_W_2023.html?nn=375550)
+when we visit the site it looks like this (F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook\Project_information\image5.png)(F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook\Project_information\sample5.txt)
+ we are looking for this (<div class="XchartFilters-wrapper">
+      <p class="downloadLink"><a href="_tools/SVG/js2/_functions/csv_export.html?view=renderCSV&amp;id=870322">Daten als CSV-Datei herunterladen</a></p>
+    </div>) simulate the click  it will triger the download of the file like this (F:\Projects\SIMBA-RUNBOOKS\GNGD_Runbook\Project_information\csv_export (4).csv) analyze it  see how you gona cleanit and parse it 
+the the parser will handle the parsing of both the master and the downloaded file the cleaning an d  editing the master in realtime without affecting the already existing data being surgical is important  the file generato as usual will make a coppy of the master after editing and name it  appropriately  as xls files and also the Metafile and the zip file appropriately in the output folder with timestamped subfoledrs for every run and a latest subfolder which will always hold the latest files in every run
+
+i think you have ever information you need so analyze the files unerstand them then create the logic and the script when you have all the information no wasting tokens please  remember the file pats i have stated up here can be this (F:\Projects) or this (D:\Projects
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
